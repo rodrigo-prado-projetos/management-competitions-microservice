@@ -1,15 +1,27 @@
-package br.com.management.competitions.microservice.controller.dto;
+package br.com.management.competitions.microservice.repositories.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
+import javax.persistence.*;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class PlayerDTO {
+@Entity(name = "player")
+public class Player {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_player")
+    private Integer id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "birth_date")
     private String birthDate;
+    @Column(name = "nationality")
     private String nationality;
-    private String teamName;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -33,13 +45,5 @@ public class PlayerDTO {
 
     public void setNationality(String nationality) {
         this.nationality = nationality;
-    }
-
-    public String getTeamName() {
-        return teamName;
-    }
-
-    public void setTeamName(String teamName) {
-        this.teamName = teamName;
     }
 }
