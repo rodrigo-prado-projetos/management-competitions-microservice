@@ -35,6 +35,7 @@ public class PlayerBS {
     private Player getPlayer(PlayerVO playerVO) {
         Player player = new Player();
         player.setId(playerVO.getId());
+        player.setIdTeam(playerVO.getIdTeam());
         player.setBirthDate(playerVO.getBirthDate());
         player.setName(playerVO.getName());
         player.setNationality(playerVO.getNationality().name());

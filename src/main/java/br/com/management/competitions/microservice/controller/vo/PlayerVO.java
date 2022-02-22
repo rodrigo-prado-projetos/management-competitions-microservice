@@ -4,9 +4,18 @@ import br.com.management.competitions.microservice.enumeration.NationalityEnum;
 
 public class PlayerVO {
     private Integer id;
+    private Integer idTeam;
     private String name;
     private String birthDate;
     private NationalityEnum nationality;
+
+    public Integer getIdTeam() {
+        return idTeam;
+    }
+
+    public void setIdTeam(Integer idTeam) {
+        this.idTeam = idTeam;
+    }
 
     public Integer getId() {
         return id;

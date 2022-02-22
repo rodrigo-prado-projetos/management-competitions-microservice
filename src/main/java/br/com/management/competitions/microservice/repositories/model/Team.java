@@ -12,16 +12,6 @@ public class Team {
     private String name;
     @Column(name = "locality")
     private String locality;
-    @Column(name = "id_player")
-    private Integer idPlayer;
-
-    public Integer getIdPlayer() {
-        return idPlayer;
-    }
-
-    public void setIdPlayer(Integer idPlayer) {
-        this.idPlayer = idPlayer;
-    }
 
     public Integer getId() {
         return id;

@@ -31,7 +31,6 @@ public class TeamBS {
         Team team = new Team();
         team.setId(teamVO.getId());
         team.setLocality(teamVO.getLocality());
-        team.setIdPlayer(teamVO.getIdPlayer());
         team.setName(teamVO.getName());
         return team;
     }

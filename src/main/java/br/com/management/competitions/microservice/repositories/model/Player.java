@@ -14,6 +14,16 @@ public class Player {
     private String birthDate;
     @Column(name = "nationality")
     private String nationality;
+    @Column(name = "id_team")
+    private Integer idTeam;
+
+    public Integer getIdTeam() {
+        return idTeam;
+    }
+
+    public void setIdTeam(Integer idTeam) {
+        this.idTeam = idTeam;
+    }
 
     public Integer getId() {
         return id;
