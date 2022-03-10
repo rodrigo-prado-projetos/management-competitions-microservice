@@ -1,5 +1,6 @@
 package br.com.management.competitions.microservice.controller;
 
+import br.com.management.competitions.microservice.controller.vo.PlayerVO;
 import br.com.management.competitions.microservice.controller.vo.TeamVO;
 import br.com.management.competitions.microservice.object.business.TeamBO;
 import br.com.management.competitions.microservice.repositories.model.Team;
@@ -15,6 +16,17 @@ import java.util.List;
 public class TeamController {
     @Autowired
     private TeamBO teamBO;
+
+
+    @GetMapping("/v1/teams/tournaments")
+    public ResponseEntity findAllTeamInTournament() {
+        List<Team> teams = this.teamBO.findAllTeams();
+        if (teams.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(teams);
+    }
+
 
     @GetMapping("/v1/teams")
     public ResponseEntity findAllTeams() {
@@ -40,6 +52,21 @@ public class TeamController {
     @DeleteMapping("v1/teams/{id}")
     public ResponseEntity<Object> deleteTeam(@PathVariable(name = "id") Integer id) {
         this.teamBO.deleteTeam(id);
+        return ResponseEntity.ok(ConstantsUtil.DELETE_SUCCESS);
+    }
+
+    @PostMapping("v1/teams/tournaments")
+    public ResponseEntity<Object> createTeamInTournament(@RequestBody PlayerVO playerVO) {
+        return ResponseEntity.ok(ConstantsUtil.CREATE_SUCCESS);
+    }
+
+    @PutMapping("v1/teams/tournaments")
+    public ResponseEntity<Object> updateTeamInTournament(@RequestBody PlayerVO playerVO) {
+        return ResponseEntity.ok(ConstantsUtil.UPDATE_SUCCESS);
+    }
+
+    @DeleteMapping("v1/teams/{id}/tournaments/{id}")
+    public ResponseEntity<Object> deleteTeamInTournament(@PathVariable(name = "id") Integer id) {
         return ResponseEntity.ok(ConstantsUtil.DELETE_SUCCESS);
     }
 }
