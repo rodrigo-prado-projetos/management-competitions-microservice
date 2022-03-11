@@ -6,16 +6,26 @@ import javax.persistence.*;
 public class Transfer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_transfer")
+    @Column(name = "IDTRANSFERENCIA")
     private Integer id;
-    @Column(name = "destination_team")
+    @Column(name = "ID_TIME_DESTINO")
     private String destinationTeam;
-    @Column(name = "origin_team")
+    @Column(name = "ID_TIME_ORIGEM")
     private String originTeam;
-    @Column(name = "date_transfer")
+    @Column(name = "DATA")
     private String date;
-    @Column(name = "value_transfer")
+    @Column(name = "VALOR")
     private Double value;
+    @Column(name = "ID_JOGADOR")
+    private String idPlayer;
+
+    public String getIdPlayer() {
+        return idPlayer;
+    }
+
+    public void setIdPlayer(String idPlayer) {
+        this.idPlayer = idPlayer;
+    }
 
     public Integer getId() {
         return id;

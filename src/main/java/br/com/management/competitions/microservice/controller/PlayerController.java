@@ -29,7 +29,6 @@ public class PlayerController {
         return ResponseEntity.ok(playerDTO);
     }
 
-
     @Cacheable("players")
     @GetMapping("/v1/players")
     public ResponseEntity findAllPlayers() {

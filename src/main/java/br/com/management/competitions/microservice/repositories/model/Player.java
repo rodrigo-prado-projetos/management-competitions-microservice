@@ -2,19 +2,20 @@ package br.com.management.competitions.microservice.repositories.model;
 
 import javax.persistence.*;
 
-@Entity(name = "player")
+@Entity
+@Table(name = "player", schema = "competition")
 public class Player {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_player")
+    @Column(name = "IDJOGADOR")
     private Integer id;
-    @Column(name = "name")
+    @Column(name = "NOME")
     private String name;
-    @Column(name = "birth_date")
+    @Column(name = "DATA_NASCIMENTO")
     private String birthDate;
-    @Column(name = "nationality")
+    @Column(name = "NACIONALIDADE")
     private String nationality;
-    @Column(name = "id_team")
+    @Column(name = "ID_TIME")
     private Integer idTeam;
 
     public Integer getIdTeam() {

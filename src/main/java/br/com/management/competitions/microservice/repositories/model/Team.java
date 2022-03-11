@@ -6,12 +6,14 @@ import javax.persistence.*;
 public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_team")
+    @Column(name = "IDTIME")
     private Integer id;
-    @Column(name = "name")
+    @Column(name = "NOME")
     private String name;
-    @Column(name = "locality")
-    private String locality;
+    @Column(name = "ID_TORNEIO")
+    private String idTournament;
+    @Column(name = "ID_PARTIDA")
+    private String idMatch;
 
     public Integer getId() {
         return id;
@@ -29,11 +31,19 @@ public class Team {
         this.name = name;
     }
 
-    public String getLocality() {
-        return locality;
+    public String getIdTournament() {
+        return idTournament;
     }
 
-    public void setLocality(String locality) {
-        this.locality = locality;
+    public void setIdTournament(String idTournament) {
+        this.idTournament = idTournament;
+    }
+
+    public String getIdMatch() {
+        return idMatch;
+    }
+
+    public void setIdMatch(String idMatch) {
+        this.idMatch = idMatch;
     }
 }

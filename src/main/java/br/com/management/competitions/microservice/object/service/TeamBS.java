@@ -29,8 +29,6 @@ public class TeamBS {
 
     private Team getTeam(TeamVO teamVO) {
         Team team = new Team();
-        team.setId(teamVO.getId());
-        team.setLocality(teamVO.getLocality());
         team.setName(teamVO.getName());
         return team;
     }
