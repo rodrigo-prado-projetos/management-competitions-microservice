@@ -8,7 +8,6 @@ import br.com.management.competitions.microservice.util.ConstantsUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -16,7 +15,6 @@ import java.util.List;
 public class TeamController {
     @Autowired
     private TeamBO teamBO;
-
 
     @GetMapping("/v1/teams/tournaments")
     public ResponseEntity findAllTeamInTournament() {
@@ -26,7 +24,6 @@ public class TeamController {
         }
         return ResponseEntity.ok(teams);
     }
-
 
     @GetMapping("/v1/teams")
     public ResponseEntity findAllTeams() {
