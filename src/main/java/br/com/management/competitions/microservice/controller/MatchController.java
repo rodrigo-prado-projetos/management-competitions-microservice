@@ -21,7 +21,7 @@ public class MatchController {
 
     @Cacheable(value = "matches", key = "id")
     @GetMapping("v1/matches/{id}/teams/tournaments")
-    public ResponseEntity findMatchTeamTournamentById(@PathVariable(name = "id") String id) {
+    public ResponseEntity findMatchTeamTournamentById(@PathVariable(name = "id") Integer id) {
         PlayerDTO playerDTO = this.playerBO.findPlayerById(id);
         if (Objects.isNull(playerDTO)) {
             return ResponseEntity.noContent().build();
@@ -33,7 +33,7 @@ public class MatchController {
     @GetMapping("v1/matches/teams/tournaments")
     public ResponseEntity findAllMatchTeamTournament() {
         ResponseEntity result;
-        List<Player> allPlayers = this.playerBO.findAllPlayers();
+        List<PlayerDTO> allPlayers = this.playerBO.findAllPlayers();
         if (allPlayers.isEmpty()) {
             result = ResponseEntity.noContent().build();
         } else {

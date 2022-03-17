@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface PlayerRepository extends CrudRepository<Player, Integer> {
-    @Query(value = "SELECT PL.NAME, PL.BIRTH_DATE, PL.NATIONALITY, TM.NAME as TEAM_NAME  FROM PLAYER PL INNER JOIN TEAM TM WHERE PL.ID_PLAYER =:id", nativeQuery = true)
+    @Query(value = "select pl.nome, pl.data_nascimento, pl.nacionalidade, tm.* from player pl inner join team tm where pl.idjogador =:id", nativeQuery = true)
     List<Object[]> findPlayerById(String id);
 
     default PlayerDTO findPlayerByIdAndConvertResult(String id) {

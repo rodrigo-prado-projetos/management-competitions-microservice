@@ -1,17 +1,17 @@
 package br.com.management.competitions.microservice.controller.vo;
 
 public class TeamVO {
-    private Integer id;
+    private Integer idTeam;
     private String name;
-    private String locality;
-    private Integer idPlayer;
+    private Integer idTournament;
+    private Integer idMatch;
 
-    public Integer getId() {
-        return id;
+    public Integer getIdTeam() {
+        return idTeam;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdTeam(Integer idTeam) {
+        this.idTeam = idTeam;
     }
 
     public String getName() {
@@ -22,19 +22,19 @@ public class TeamVO {
         this.name = name;
     }
 
-    public String getLocality() {
-        return locality;
+    public Integer getIdTournament() {
+        return idTournament;
     }
 
-    public void setLocality(String locality) {
-        this.locality = locality;
+    public void setIdTournament(Integer idTournament) {
+        this.idTournament = idTournament;
     }
 
-    public Integer getIdPlayer() {
-        return idPlayer;
+    public Integer getIdMatch() {
+        return idMatch;
     }
 
-    public void setIdPlayer(Integer idPlayer) {
-        this.idPlayer = idPlayer;
+    public void setIdMatch(Integer idMatch) {
+        this.idMatch = idMatch;
     }
 }

@@ -6,6 +6,8 @@ import br.com.management.competitions.microservice.repositories.model.Team;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class TeamBS {
     @Autowired
@@ -27,9 +29,16 @@ public class TeamBS {
         this.teamRepository.deleteById(id);
     }
 
+    public Optional<Team> findById(Integer id) {
+        return teamRepository.findById(id);
+    }
+
     private Team getTeam(TeamVO teamVO) {
         Team team = new Team();
+        team.setId(teamVO.getIdTeam());
         team.setName(teamVO.getName());
+        team.setIdTournament(teamVO.getIdTournament());
+        team.setIdMatch(teamVO.getIdMatch());
         return team;
     }
 

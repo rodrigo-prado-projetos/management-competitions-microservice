@@ -11,9 +11,9 @@ public class Team {
     @Column(name = "NOME")
     private String name;
     @Column(name = "ID_TORNEIO")
-    private String idTournament;
+    private Integer idTournament;
     @Column(name = "ID_PARTIDA")
-    private String idMatch;
+    private Integer idMatch;
 
     public Integer getId() {
         return id;
@@ -31,19 +31,19 @@ public class Team {
         this.name = name;
     }
 
-    public String getIdTournament() {
+    public Integer getIdTournament() {
         return idTournament;
     }
 
-    public void setIdTournament(String idTournament) {
+    public void setIdTournament(Integer idTournament) {
         this.idTournament = idTournament;
     }
 
-    public String getIdMatch() {
+    public Integer getIdMatch() {
         return idMatch;
     }
 
-    public void setIdMatch(String idMatch) {
+    public void setIdMatch(Integer idMatch) {
         this.idMatch = idMatch;
     }
 }

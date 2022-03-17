@@ -1,11 +1,12 @@
 package br.com.management.competitions.microservice.object.service;
 
-import br.com.management.competitions.microservice.controller.dto.PlayerDTO;
 import br.com.management.competitions.microservice.controller.vo.PlayerVO;
 import br.com.management.competitions.microservice.repositories.PlayerRepository;
 import br.com.management.competitions.microservice.repositories.model.Player;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class PlayerBS {
@@ -16,8 +17,8 @@ public class PlayerBS {
         return this.playerRepository.findAll();
     }
 
-    public PlayerDTO findPlayerById(String id) {
-        return this.playerRepository.findPlayerByIdAndConvertResult(id);
+    public Optional<Player> findPlayerById(Integer id) {
+        return this.playerRepository.findById(id);
     }
 
     public void createPlayer(PlayerVO playerVO) {
@@ -34,6 +35,7 @@ public class PlayerBS {
 
     private Player getPlayer(PlayerVO playerVO) {
         Player player = new Player();
+        player.setId(playerVO.getId());
         player.setIdTeam(playerVO.getIdTeam());
         player.setBirthDate(playerVO.getBirthDate());
         player.setName(playerVO.getName());

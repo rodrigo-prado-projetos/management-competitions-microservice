@@ -19,9 +19,9 @@ public class PlayerController {
     @Autowired
     private PlayerBO playerBO;
 
-    @Cacheable(value = "players", key = "id")
+    //  @Cacheable(value = "players", key = "id")
     @GetMapping("/v1/players/{id}")
-    public ResponseEntity findPlayerById(@PathVariable(name = "id") String id) {
+    public ResponseEntity findPlayerById(@PathVariable(name = "id") Integer id) {
         PlayerDTO playerDTO = this.playerBO.findPlayerById(id);
         if (Objects.isNull(playerDTO)) {
             return ResponseEntity.noContent().build();
@@ -33,7 +33,7 @@ public class PlayerController {
     @GetMapping("/v1/players")
     public ResponseEntity findAllPlayers() {
         ResponseEntity result;
-        List<Player> allPlayers = this.playerBO.findAllPlayers();
+        List<PlayerDTO> allPlayers = this.playerBO.findAllPlayers();
         if (allPlayers.isEmpty()) {
             result = ResponseEntity.noContent().build();
         } else {
