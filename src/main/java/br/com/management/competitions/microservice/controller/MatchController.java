@@ -1,9 +1,8 @@
 package br.com.management.competitions.microservice.controller;
 
-import br.com.management.competitions.microservice.controller.dto.PlayerDTO;
-import br.com.management.competitions.microservice.controller.vo.PlayerVO;
-import br.com.management.competitions.microservice.object.business.PlayerBO;
-import br.com.management.competitions.microservice.repositories.model.Player;
+import br.com.management.competitions.microservice.controller.dto.MatchTeamTournamentDTO;
+import br.com.management.competitions.microservice.controller.vo.MatchVO;
+import br.com.management.competitions.microservice.object.business.MatchBO;
 import br.com.management.competitions.microservice.util.ConstantsUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -11,53 +10,42 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Objects;
 
 @RestController
 @RequestMapping(value = "/competitions")
 public class MatchController {
     @Autowired
-    private PlayerBO playerBO;
+    private MatchBO matchBO;
 
-    @Cacheable(value = "matches", key = "id")
-    @GetMapping("v1/matches/{id}/teams/tournaments")
-    public ResponseEntity findMatchTeamTournamentById(@PathVariable(name = "id") Integer id) {
-        PlayerDTO playerDTO = this.playerBO.findPlayerById(id);
-        if (Objects.isNull(playerDTO)) {
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.ok(playerDTO);
-    }
-
-    @Cacheable("matches")
+//    @Cacheable("matches")
     @GetMapping("v1/matches/teams/tournaments")
-    public ResponseEntity findAllMatchTeamTournament() {
+    public ResponseEntity findAllMatchesTeamTournament() {
         ResponseEntity result;
-        List<PlayerDTO> allPlayers = this.playerBO.findAllPlayers();
-        if (allPlayers.isEmpty()) {
+        List<MatchTeamTournamentDTO> matches = this.matchBO.findAllMatchesTeamTournament();
+        if (matches.isEmpty()) {
             result = ResponseEntity.noContent().build();
         } else {
-            result = ResponseEntity.ok(allPlayers);
+            result = ResponseEntity.ok(matches);
         }
         return result;
     }
 
     @PostMapping("v1/matches/teams/tournaments")
-    public ResponseEntity<Object> createTournament(@RequestBody PlayerVO playerVO) {
-        this.playerBO.createPlayer(playerVO);
+    public ResponseEntity<Object> createMatch(@RequestBody MatchVO matchVO) {
+        this.matchBO.createMatch(matchVO);
         return ResponseEntity.ok(ConstantsUtil.CREATE_SUCCESS);
     }
 
     @PutMapping("v1/matches/teams/tournaments")
-    public ResponseEntity<Object> updateTournament(@RequestBody PlayerVO playerVO) {
-        this.playerBO.updatePlayer(playerVO);
+    public ResponseEntity<Object> updateTournament(@RequestBody MatchVO matchVO) {
+        this.matchBO.updateMatch(matchVO);
         return ResponseEntity.ok(ConstantsUtil.UPDATE_SUCCESS);
     }
 
     @DeleteMapping("v1/matches/{id}/teams/tournaments")
     public ResponseEntity<Object> deleteMatchBetweenTeamInTournament(
             @PathVariable(name = "id") Integer id) {
-        this.playerBO.deletePlayer(id);
+        this.matchBO.deleteMatch(id);
         return ResponseEntity.ok(ConstantsUtil.DELETE_SUCCESS);
     }
 }

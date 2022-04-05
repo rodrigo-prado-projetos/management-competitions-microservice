@@ -10,10 +10,20 @@ public class Team {
     private Integer id;
     @Column(name = "NOME")
     private String name;
+    @Column(name = "LOCALIDADE")
+    private String locality;
     @Column(name = "ID_TORNEIO")
     private Integer idTournament;
     @Column(name = "ID_PARTIDA")
     private Integer idMatch;
+
+    public String getLocality() {
+        return locality;
+    }
+
+    public void setLocality(String locality) {
+        this.locality = locality;
+    }
 
     public Integer getId() {
         return id;

@@ -6,24 +6,42 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TransferDTO {
-    private String destinationTeam;
-    private String originTeam;
+    private Integer idTransfer;
+    private Integer idPlayer;
+    private Integer destinationTeam;
+    private Integer originTeam;
     private String data;
-    private Double valor;
+    private String valor;
 
-    public String getDestinationTeam() {
+    public Integer getIdTransfer() {
+        return idTransfer;
+    }
+
+    public void setIdTransfer(Integer idTransfer) {
+        this.idTransfer = idTransfer;
+    }
+
+    public Integer getIdPlayer() {
+        return idPlayer;
+    }
+
+    public void setIdPlayer(Integer idPlayer) {
+        this.idPlayer = idPlayer;
+    }
+
+    public Integer getDestinationTeam() {
         return destinationTeam;
     }
 
-    public void setDestinationTeam(String destinationTeam) {
+    public void setDestinationTeam(Integer destinationTeam) {
         this.destinationTeam = destinationTeam;
     }
 
-    public String getOriginTeam() {
+    public Integer getOriginTeam() {
         return originTeam;
     }
 
-    public void setOriginTeam(String originTeam) {
+    public void setOriginTeam(Integer originTeam) {
         this.originTeam = originTeam;
     }
 
@@ -35,11 +53,11 @@ public class TransferDTO {
         this.data = data;
     }
 
-    public Double getValor() {
+    public String getValor() {
         return valor;
     }
 
-    public void setValor(Double valor) {
+    public void setValor(String valor) {
         this.valor = valor;
     }
 }

@@ -1,9 +1,8 @@
 package br.com.management.competitions.microservice.controller;
 
-import br.com.management.competitions.microservice.controller.vo.PlayerVO;
+import br.com.management.competitions.microservice.controller.dto.TournamentDTO;
 import br.com.management.competitions.microservice.controller.vo.TournamentVO;
 import br.com.management.competitions.microservice.object.business.TournamentBO;
-import br.com.management.competitions.microservice.repositories.model.Team;
 import br.com.management.competitions.microservice.util.ConstantsUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,11 +18,11 @@ public class TournamentController {
 
     @GetMapping("/v1/tournaments")
     public ResponseEntity findAllTournaments() {
-         this.tournamentBO.findAllTournaments();
-//        if (teams.isEmpty()) {
-//            return ResponseEntity.noContent().build();
-//        }
-        return ResponseEntity.ok(null);
+        List<TournamentDTO> tournaments = this.tournamentBO.findAllTournaments();
+        if (tournaments.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(tournaments);
     }
 
     @PostMapping("v1/tournaments")
@@ -33,8 +32,8 @@ public class TournamentController {
     }
 
     @PutMapping("v1/tournaments")
-    public ResponseEntity<Object> updateTournament(@RequestBody PlayerVO playerVO) {
-        this.tournamentBO.updateTournament(playerVO);
+    public ResponseEntity<Object> updateTournament(@RequestBody TournamentVO tournamentVO) {
+        this.tournamentBO.updateTournament(tournamentVO);
         return ResponseEntity.ok(ConstantsUtil.UPDATE_SUCCESS);
     }
 
@@ -44,45 +43,59 @@ public class TournamentController {
         return ResponseEntity.ok(ConstantsUtil.DELETE_SUCCESS);
     }
 
-    @PostMapping("v1/tournaments/{id}/matches/{id}/events/start")
-    public ResponseEntity<Object> createTournamentMatchEventsStart() {
-        this.tournamentBO.createTournamentMatchEventsStart();
+    @PostMapping("v1/tournaments/{idTournament}/matches/{idMatch}/events/start")
+    public ResponseEntity<Object> createTournamentMatchEventsStart(
+            @PathVariable(name = "idTournament") Integer idTournament,
+            @PathVariable(name = "idMatch") Integer idMatch) {
+        this.tournamentBO.createTournamentMatchEventsStart(idTournament, idMatch);
         return ResponseEntity.ok(ConstantsUtil.CREATE_SUCCESS);
     }
 
     @PostMapping("v1/tournaments/{id}/matches/{id}/events/goal")
-    public ResponseEntity<Object> createTournamentMatchEventsGoal() {
-        this.tournamentBO.createTournamentMatchEventsGoal();
+    public ResponseEntity<Object> createTournamentMatchEventsGoal(
+            @PathVariable(name = "idTournament") Integer idTournament,
+            @PathVariable(name = "idMatch") Integer idMatch) {
+        this.tournamentBO.createTournamentMatchEventsGoal(idTournament, idMatch);
         return ResponseEntity.ok(ConstantsUtil.CREATE_SUCCESS);
     }
 
     @PostMapping("v1/tournaments/{id}/matches/{id}/events/interval")
-    public ResponseEntity<Object> createTournamentMatchEventsInterval() {
-        this.tournamentBO.createTournamentMatchEventsInterval();
+    public ResponseEntity<Object> createTournamentMatchEventsInterval(
+            @PathVariable(name = "idTournament") Integer idTournament,
+            @PathVariable(name = "idMatch") Integer idMatch) {
+        this.tournamentBO.createTournamentMatchEventsInterval(idTournament, idMatch);
         return ResponseEntity.ok(ConstantsUtil.CREATE_SUCCESS);
     }
 
     @PostMapping("v1/tournaments/{id}/matches/{id}/events/addition")
-    public ResponseEntity<Object> createTournamentMatchEventsAddition() {
-        this.tournamentBO.createTournamentMatchEventsAddition();
+    public ResponseEntity<Object> createTournamentMatchEventsAddition(
+            @PathVariable(name = "idTournament") Integer idTournament,
+            @PathVariable(name = "idMatch") Integer idMatch) {
+        this.tournamentBO.createTournamentMatchEventsAddition(idTournament, idMatch);
         return ResponseEntity.ok(ConstantsUtil.CREATE_SUCCESS);
     }
 
     @PostMapping("v1/tournaments/{id}/matches/{id}/events/replacement")
-    public ResponseEntity<Object> createTournamentMatchEventsReplacement() {
-        this.tournamentBO.createTournamentMatchEventsReplacement();
+    public ResponseEntity<Object> createTournamentMatchEventsReplacement(
+            @PathVariable(name = "idTournament") Integer idTournament,
+            @PathVariable(name = "idMatch") Integer idMatch) {
+        this.tournamentBO.createTournamentMatchEventsReplacement(idTournament, idMatch);
         return ResponseEntity.ok(ConstantsUtil.CREATE_SUCCESS);
     }
 
     @PostMapping("v1/tournaments/{id}/matches/{id}/events/warning")
-    public ResponseEntity<Object> createTournamentMatchEventsWarning() {
-        this.tournamentBO.createTournamentMatchEventsWarning();
+    public ResponseEntity<Object> createTournamentMatchEventsWarning(
+            @PathVariable(name = "idTournament") Integer idTournament,
+            @PathVariable(name = "idMatch") Integer idMatch) {
+        this.tournamentBO.createTournamentMatchEventsWarning(idTournament, idMatch);
         return ResponseEntity.ok(ConstantsUtil.CREATE_SUCCESS);
     }
 
     @PostMapping("v1/tournaments/{id}/matches/{id}/events/end")
-    public ResponseEntity<Object> createTournamentMatchEventsEnd() {
-        this.tournamentBO.createTournamentMatchEventsEnd();
+    public ResponseEntity<Object> createTournamentMatchEventsEnd(
+            @PathVariable(name = "idTournament") Integer idTournament,
+            @PathVariable(name = "idMatch") Integer idMatch) {
+        this.tournamentBO.createTournamentMatchEventsEnd(idTournament, idMatch);
         return ResponseEntity.ok(ConstantsUtil.CREATE_SUCCESS);
     }
 }

@@ -1,6 +1,6 @@
-package br.com.management.competitions.microservice.controller.vo;
+package br.com.management.competitions.microservice.controller.dto;
 
-public class TournamentVO {
+public class TournamentDTO {
     private Integer id;
     private String name;
 

@@ -9,21 +9,21 @@ public class Transfer {
     @Column(name = "IDTRANSFERENCIA")
     private Integer id;
     @Column(name = "ID_TIME_DESTINO")
-    private String destinationTeam;
+    private Integer destinationTeam;
     @Column(name = "ID_TIME_ORIGEM")
-    private String originTeam;
+    private Integer originTeam;
     @Column(name = "DATA")
     private String date;
     @Column(name = "VALOR")
-    private Double value;
+    private String value;
     @Column(name = "ID_JOGADOR")
-    private String idPlayer;
+    private Integer idPlayer;
 
-    public String getIdPlayer() {
+    public Integer getIdPlayer() {
         return idPlayer;
     }
 
-    public void setIdPlayer(String idPlayer) {
+    public void setIdPlayer(Integer idPlayer) {
         this.idPlayer = idPlayer;
     }
 
@@ -35,19 +35,19 @@ public class Transfer {
         this.id = id;
     }
 
-    public String getDestinationTeam() {
+    public Integer getDestinationTeam() {
         return destinationTeam;
     }
 
-    public void setDestinationTeam(String destinationTeam) {
+    public void setDestinationTeam(Integer destinationTeam) {
         this.destinationTeam = destinationTeam;
     }
 
-    public String getOriginTeam() {
+    public Integer getOriginTeam() {
         return originTeam;
     }
 
-    public void setOriginTeam(String originTeam) {
+    public void setOriginTeam(Integer originTeam) {
         this.originTeam = originTeam;
     }
 
@@ -59,11 +59,11 @@ public class Transfer {
         this.date = date;
     }
 
-    public Double getValue() {
+    public String getValue() {
         return value;
     }
 
-    public void setValue(Double value) {
+    public void setValue(String value) {
         this.value = value;
     }
 }

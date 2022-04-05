@@ -3,8 +3,17 @@ package br.com.management.competitions.microservice.controller.vo;
 public class TeamVO {
     private Integer idTeam;
     private String name;
+    private String locality;
     private Integer idTournament;
     private Integer idMatch;
+
+    public String getLocality() {
+        return locality;
+    }
+
+    public void setLocality(String locality) {
+        this.locality = locality;
+    }
 
     public Integer getIdTeam() {
         return idTeam;

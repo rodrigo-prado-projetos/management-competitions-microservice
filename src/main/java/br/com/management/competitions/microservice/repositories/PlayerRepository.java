@@ -13,6 +13,8 @@ public interface PlayerRepository extends CrudRepository<Player, Integer> {
     @Query(value = "select pl.nome, pl.data_nascimento, pl.nacionalidade, tm.* from player pl inner join team tm where pl.idjogador =:id", nativeQuery = true)
     List<Object[]> findPlayerById(String id);
 
+    Player findByIdTeam(Integer id);
+
     default PlayerDTO findPlayerByIdAndConvertResult(String id) {
         List<Object[]> objects = findPlayerById(id);
         PlayerDTO playerDTO = new PlayerDTO();

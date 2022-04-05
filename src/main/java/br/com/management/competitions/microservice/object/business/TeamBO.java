@@ -1,5 +1,7 @@
 package br.com.management.competitions.microservice.object.business;
 
+import br.com.management.competitions.microservice.controller.dto.TeamDTO;
+import br.com.management.competitions.microservice.controller.dto.TeamTournamentDTO;
 import br.com.management.competitions.microservice.controller.vo.TeamVO;
 import br.com.management.competitions.microservice.object.service.TeamBS;
 import br.com.management.competitions.microservice.repositories.model.Team;
@@ -14,10 +16,8 @@ public class TeamBO {
     @Autowired
     private TeamBS teamBS;
 
-    public List<Team> findAllTeams() {
-        List<Team> teams = new ArrayList<>();
-        this.teamBS.findAllTeams().iterator().forEachRemaining(teams::add);
-        return teams;
+    public List<TeamDTO> findAllTeams() {
+        return this.teamBS.findAllTeams();
     }
 
     public void createTeam(TeamVO teamVO) {
@@ -30,5 +30,9 @@ public class TeamBO {
 
     public void deleteTeam(Integer id) {
         this.teamBS.deleteTeam(id);
+    }
+
+    public List<TeamTournamentDTO> findTeamsRegisteredITournaments() {
+        return this.teamBS.findTeamsRegisteredITournaments();
     }
 }
