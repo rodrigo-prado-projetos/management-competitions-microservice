@@ -51,7 +51,7 @@ public class TournamentController {
         return ResponseEntity.ok(ConstantsUtil.CREATE_SUCCESS);
     }
 
-    @PostMapping("v1/tournaments/{id}/matches/{id}/events/goal")
+    @PostMapping("v1/tournaments/{idTournament}/matches/{idMatch}/events/goal")
     public ResponseEntity<Object> createTournamentMatchEventsGoal(
             @PathVariable(name = "idTournament") Integer idTournament,
             @PathVariable(name = "idMatch") Integer idMatch) {
@@ -59,7 +59,7 @@ public class TournamentController {
         return ResponseEntity.ok(ConstantsUtil.CREATE_SUCCESS);
     }
 
-    @PostMapping("v1/tournaments/{id}/matches/{id}/events/interval")
+    @PostMapping("v1/tournaments/{idTournament}/matches/{idMatch}/events/interval")
     public ResponseEntity<Object> createTournamentMatchEventsInterval(
             @PathVariable(name = "idTournament") Integer idTournament,
             @PathVariable(name = "idMatch") Integer idMatch) {
@@ -67,7 +67,7 @@ public class TournamentController {
         return ResponseEntity.ok(ConstantsUtil.CREATE_SUCCESS);
     }
 
-    @PostMapping("v1/tournaments/{id}/matches/{id}/events/addition")
+    @PostMapping("v1/tournaments/{idTournament}/matches/{idMatch}/events/addition")
     public ResponseEntity<Object> createTournamentMatchEventsAddition(
             @PathVariable(name = "idTournament") Integer idTournament,
             @PathVariable(name = "idMatch") Integer idMatch) {
@@ -75,7 +75,7 @@ public class TournamentController {
         return ResponseEntity.ok(ConstantsUtil.CREATE_SUCCESS);
     }
 
-    @PostMapping("v1/tournaments/{id}/matches/{id}/events/replacement")
+    @PostMapping("v1/tournaments/{idTournament}/matches/{idMatch}/events/replacement")
     public ResponseEntity<Object> createTournamentMatchEventsReplacement(
             @PathVariable(name = "idTournament") Integer idTournament,
             @PathVariable(name = "idMatch") Integer idMatch) {
@@ -83,7 +83,7 @@ public class TournamentController {
         return ResponseEntity.ok(ConstantsUtil.CREATE_SUCCESS);
     }
 
-    @PostMapping("v1/tournaments/{id}/matches/{id}/events/warning")
+    @PostMapping("v1/tournaments/{idTournament}/matches/{idMatch}/events/warning")
     public ResponseEntity<Object> createTournamentMatchEventsWarning(
             @PathVariable(name = "idTournament") Integer idTournament,
             @PathVariable(name = "idMatch") Integer idMatch) {
@@ -91,7 +91,7 @@ public class TournamentController {
         return ResponseEntity.ok(ConstantsUtil.CREATE_SUCCESS);
     }
 
-    @PostMapping("v1/tournaments/{id}/matches/{id}/events/end")
+    @PostMapping("v1/tournaments/{idTournament}/matches/{idMatch}/events/end")
     public ResponseEntity<Object> createTournamentMatchEventsEnd(
             @PathVariable(name = "idTournament") Integer idTournament,
             @PathVariable(name = "idMatch") Integer idMatch) {
