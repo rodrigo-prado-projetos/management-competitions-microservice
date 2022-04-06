@@ -3,7 +3,6 @@ package br.com.management.competitions.microservice.controller;
 import br.com.management.competitions.microservice.controller.dto.PlayerDTO;
 import br.com.management.competitions.microservice.controller.vo.PlayerVO;
 import br.com.management.competitions.microservice.object.business.PlayerBO;
-import br.com.management.competitions.microservice.repositories.model.Player;
 import br.com.management.competitions.microservice.util.ConstantsUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -19,7 +18,7 @@ public class PlayerController {
     @Autowired
     private PlayerBO playerBO;
 
-    //  @Cacheable(value = "players", key = "id")
+    @Cacheable(value = "players", key = "id")
     @GetMapping("/v1/players/{id}")
     public ResponseEntity findPlayerById(@PathVariable(name = "id") Integer id) {
         PlayerDTO playerDTO = this.playerBO.findPlayerById(id);
@@ -29,7 +28,7 @@ public class PlayerController {
         return ResponseEntity.ok(playerDTO);
     }
 
-//    @Cacheable("players")
+    @Cacheable("players")
     @GetMapping("/v1/players")
     public ResponseEntity findAllPlayers() {
         ResponseEntity result;
